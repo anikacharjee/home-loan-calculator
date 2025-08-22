@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Loan EMI Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="container">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-6 md:col-span-2">Home Loan EMI Calculator</h1>
+
+        <div class="input-section flex flex-col gap-6">
+            <!-- Loan Amount -->
+            <div class="slider-container">
+                <label for="loanAmount" class="block text-gray-700 font-medium mb-2">Loan Amount</label>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="text-gray-500 font-bold text-lg">₹</span>
+                    <input type="number" id="loanAmount" value="2500000" min="100000" max="100000000" step="10000"
+                           class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-right">
+                </div>
+                <input type="range" id="loanAmountSlider" min="100000" max="100000000" value="2500000" step="10000" class="range-slider">
+                <div class="flex justify-between text-sm text-gray-500 mt-1">
+                    <span>₹ 1 Lac</span>
+                    <span>₹ 10 Cr</span>
+                </div>
+            </div>
+
+            <!-- Tenure -->
+            <div class="slider-container">
+                <label for="loanTenure" class="block text-gray-700 font-medium mb-2">Tenure (Years)</label>
+                <div class="flex items-center gap-2 mb-2">
+                    <input type="number" id="loanTenure" value="30" min="1" max="30" step="1"
+                           class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-right">
+                    <span class="text-gray-500 font-medium">%</span>
+                </div>
+                <input type="range" id="loanTenureSlider" min="1" max="30" value="30" step="1" class="range-slider">
+                <div class="flex justify-between text-sm text-gray-500 mt-1">
+                    <span>1</span>
+                    <span>30</span>
+                </div>
+            </div>
+
+            <!-- Interest Rate -->
+            <div class="slider-container">
+                <label for="interestRate" class="block text-gray-700 font-medium mb-2">Interest Rate (% P.A.)</label>
+                <div class="flex items-center gap-2 mb-2">
+                    <input type="number" id="interestRate" value="7.9" min="0.5" max="15" step="0.1"
+                           class="flex-grow p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-right">
+                    <span class="text-gray-500 font-medium">%</span>
+                </div>
+                <input type="range" id="interestRateSlider" min="0.5" max="15" value="7.9" step="0.1" class="range-slider">
+                <div class="flex justify-between text-sm text-gray-500 mt-1">
+                    <span>0.5</span>
+                    <span>15</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="output-section flex flex-col items-center justify-center gap-6">
+            <div class="text-center">
+                <h3 class="text-gray-700 text-lg md:text-xl font-medium">Monthly Home Loan EMI</h3>
+                <p id="monthlyEMI" class="text-blue-700 text-4xl md:text-5xl font-bold mt-2">₹ 18,170</p>
+                <!-- <div class="flex gap-4 mt-4 text-blue-600 text-sm md:text-base">
+                    <a href="#" class="hover:underline">Loan Amortization Table</a>
+                    <a href="#" class="hover:underline">View Details</a>
+                </div> -->
+            </div>
+
+            <!-- <button class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 ease-in-out shadow-md hover:shadow-lg">
+                Talk To Our Loan Expert
+            </button> -->
+
+            <div class="w-48 h-48 md:w-64 md:h-64 mt-4">
+                <canvas id="emiChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"> </script>
+</body>
+</html>
